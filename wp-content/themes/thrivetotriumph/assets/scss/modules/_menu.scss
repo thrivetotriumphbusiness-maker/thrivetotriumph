@@ -1,47 +1,88 @@
 @use 'animations';
 
-header {
-  .navbar {
-    position: relative;
-    background-color: var(--dark-slate-blue) !important;
-    box-shadow: 0 20px 15px 0 rgba(23, 23, 23, 0.05) !important;
-  }
+// header {
+//   .navbar {
+//     position: relative;
+//     background-color: var(--dark-slate-blue) !important;
+//     box-shadow: 0 20px 15px 0 rgba(23, 23, 23, 0.05) !important;
+//   }
+// }
+
+// .navbar-nav,
+// .footer-navbar {
+//   .nav-item {
+//     &.active {
+//       a {
+//         font-weight: bold;
+//         color: var(--base-color) !important
+//       }
+//     }
+
+//     a:hover {
+//       color: var(--base-color)
+//     }
+
+//     .nav-link {
+//       opacity: 1 !important;
+//     }
+//   }
+// }
+
+// .home {
+//   header {
+//     .navbar {
+//       position: relative;
+//     }
+//   }
+// }
+
+// .sticky {
+//   &.sticky-active {
+//     .navbar {
+//       animation-name: opacityMenu;
+//       animation-duration: 1s;
+//       position: fixed;
+//     }
+//   }
+// }
+
+/* header */
+.navbar .navbar-nav .nav-link {
+  font-size: 18px;
 }
 
-.navbar-nav,
-.footer-navbar {
-  .nav-item {
-    &.active {
-      a {
-        font-weight: bold;
-        color: var(--base-color) !important
-      }
-    }
-
-    a:hover {
-      color: var(--base-color)
-    }
-
-    .nav-link {
-      opacity: 1 !important;
-    }
-  }
+header .navbar-brand img {
+  max-height: 50px;
 }
 
-.home {
-  header {
-    .navbar {
-      position: relative;
-    }
-  }
+footer .footer-logo img {
+  max-height: 50px;
 }
 
-.sticky {
-  &.sticky-active {
-    .navbar {
-      animation-name: opacityMenu;
-      animation-duration: 1s;
-      position: fixed;
-    }
+.navbar .navbar-nav .simple-dropdown .dropdown-menu {
+  width: 260px;
+}
+
+.navbar .navbar-nav .simple-dropdown .dropdown-menu li a {
+  font-size: 16px;
+  line-height: 30px;
+  font-weight: 500;
+}
+
+.navbar .navbar-nav .dropdown.dropdown-with-icon .dropdown-menu {
+  width: 360px;
+}
+
+.header-icon .header-social-icon a {
+  font-size: 17px;
+  padding-left: 23px;
+}
+
+//Banner
+.sec-banner {
+  margin-top: 50px;
+
+  @media (min-width: 992px) {
+    margin-top: 0;
   }
 }

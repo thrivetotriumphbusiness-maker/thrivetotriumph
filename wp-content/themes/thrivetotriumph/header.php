@@ -2,6 +2,24 @@
 <html <?php language_attributes(); ?> class="no-js">
 
 <head>
+  <!--
+     _____ _          _             _          _____    _                       _     
+|_   _| |        (_)           | |        |_   _|  (_)                     | |    
+  | | | |__  _ __ ___   _____  | |_ ___     | |_ __ _ _   _ _ __ ___  _ __ | |__  
+  | | | '_ \| '__| \ \ / / _ \ | __/ _ \    | | '__| | | | | '_ ` _ \| '_ \| '_ \ 
+  | | | | | | |  | |\ V /  __/ | || (_) |   | | |  | | |_| | | | | | | |_) | | | |
+  \_/ |_| |_|_|  |_| \_/ \___|  \__\___/    \_/_|  |_|\__,_|_| |_| |_| .__/|_| |_|
+                                                                     | |          
+                                                                     |_|          
+  -->
+  <!-- 
+  If you look inside, you’ll probably be wondering who the handsome developer behind this is, right? 😜.
+  I’m Albar, a professional web developer with over 10 years of experience. 
+  Feel free to reach out through any of the contact options below for collaboration opportunities.
+
+  email: business@moh-albar.my.id or albar@comintel-tp.com	| Professional Web Developer | Odoo Developer  
+  -->
+
   <meta charset="<?php bloginfo('charset') ?>" />
   <meta name='viewport' content='width=device-width, initial-scale=1'>
   <!-- favicon icon -->
@@ -28,45 +46,24 @@ if (!function_exists('wp_body_open')) {
   <?php wp_body_open() ?>
 
   <!-- start header -->
-  <header class="header-with-topbar">
-    <!-- start header top bar -->
-    <div
-      class="header-top-bar top-bar-light bg-white disable-fixed md-border-bottom border-color-transparent-dark-very-light">
-      <div class="container-fluid">
-        <div class="row h-45px align-items-center m-0">
-          <div class="col-md-6 text-center text-md-start">
-            <div class="fs-14 text-dark-gray">Our consulting experts waiting for you! <a
-                href="demo-consulting-contact.html" class="text-base-color fw-500 text-decoration-line-bottom">Contact
-                now</a></div>
-          </div>
-          <div class="col-6 text-end d-none d-md-flex">
-            <div class="widget fs-14 me-30px md-me-0"><a href="tel:02228899900" class="text-dark-gray"><i
-                  class="feather icon-feather-phone-call text-base-color"></i> 0222 8899900</a></div>
-            <div class="widget fs-14 text-dark-gray d-none d-lg-inline-block"><i
-                class="feather icon-feather-map-pin text-base-color"></i> Broadway, 24th Floor, San Francisco</div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <!-- end header top bar -->
+  <header>
     <!-- start navigation -->
-    <nav
-      class="navbar navbar-expand-lg header-transparent bg-transparent border-bottom border-color-transparent-white-light disable-fixed">
+    <nav class="navbar navbar-expand-lg header-light header-transparent bg-transparent disable-fixed">
       <div class="container-fluid">
-        <div class="col-auto col-lg-2 me-auto">
-          <a class="navbar-brand" href="demo-consulting.html">
-            <img src="<?php echo get_theme_file_uri('assets/images/demo-consulting-logo-white.png') ?>"
-              data-at2x="<?php echo get_theme_file_uri('assets/images/demo-consulting-logo-white@2x.png') ?>" alt=""
+        <div class="col-auto col-lg-2 me-lg-0 me-auto">
+          <a class="navbar-brand" href="<?php echo esc_url(home_url()) ?>">
+            <img src="<?php echo get_theme_file_uri('assets/images/thrive_logo_black.webp') ?>"
+              data-at2x="<?php echo get_theme_file_uri('assets/images/thrive_logo_black.webp') ?>" alt=""
               class="default-logo">
-            <img src="<?php echo get_theme_file_uri('assets/images/demo-consulting-logo-black.png') ?>"
-              data-at2x="<?php echo get_theme_file_uri('assets/images/demo-consulting-logo-black@2x.png') ?>" alt=""
+            <img src="<?php echo get_theme_file_uri('assets/images/thrive_logo_black.webp') ?>"
+              data-at2x="<?php echo get_theme_file_uri('assets/images/thrive_logo_black.webp') ?>" alt=""
               class="alt-logo">
-            <img src="<?php echo get_theme_file_uri('assets/images/demo-consulting-logo-black.png') ?>"
-              data-at2x="<?php echo get_theme_file_uri('assets/images/demo-consulting-logo-black@2x.png') ?>" alt=""
+            <img src="<?php echo get_theme_file_uri('assets/images/thrive_logo_black.webp') ?>"
+              data-at2x="<?php echo get_theme_file_uri('assets/images/thrive_logo_black.webp') ?>" alt=""
               class="mobile-logo">
           </a>
         </div>
-        <div class="col-auto col-lg-8 menu-order position-static">
+        <div class="col-auto menu-order position-static">
           <button class="navbar-toggler float-start" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
             aria-controls="navbarNav" aria-label="Toggle navigation">
             <span class="navbar-toggler-line"></span>
@@ -74,56 +71,34 @@ if (!function_exists('wp_body_open')) {
             <span class="navbar-toggler-line"></span>
             <span class="navbar-toggler-line"></span>
           </button>
-          <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
-            <ul class="navbar-nav alt-font">
-              <li class="nav-item"><a href="<?php echo esc_url(site_url('/')); ?>" class="nav-link">About</a></li>
-              <li class="nav-item"><a href="demo-consulting-process.html" class="nav-link">Process</a></li>
-              <li class="nav-item"><a href="demo-consulting-clients.html" class="nav-link">Clients</a></li>
-              <li class="nav-item"><a href="demo-consulting-news.html" class="nav-link">News</a></li>
-              <li class="nav-item"><a href="demo-consulting-contact.html" class="nav-link">Contact</a></li>
+          <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+              <li class="nav-item"><a href="<?php echo esc_url(site_url('/')); ?>" data-target="about"
+                  class="nav-link">About</a></li>
+              <li class="nav-item"><a href="<?php echo esc_url(site_url('/')); ?>" data-target="client"
+                  class="nav-link">Clients</a></li>
+              <li class="nav-item"><a href="<?php echo esc_url(site_url('/')); ?>" data-target="service"
+                  class="nav-link">Services</a></li>
+              <li class="nav-item"><a href="<?php echo esc_url(site_url('/')); ?>" data-target="why-choose-us"
+                  class="nav-link">Why Choose Us</a></li>
+              <li class="nav-item"><a href="<?php echo esc_url(site_url('/')); ?>" data-target="testimonial"
+                  class="nav-link">Testimonials</a></li>
+              <li class="nav-item"><a href="<?php echo esc_url(site_url('contact')); ?>" class="nav-link">Contact</a>
+              </li>
             </ul>
           </div>
         </div>
-        <div class="col-auto col-lg-2 text-end md-pe-0">
+        <div class="col-auto col-lg-2 text-end">
           <div class="header-icon">
-            <div class="header-push-button icon">
-              <div class="push-button">
-                <span></span>
-                <span></span>
-                <span></span>
-                <span></span>
-              </div>
+            <div class="header-social-icon icon">
+              <a href="http://www.facebook.com" target="_blank"><i class="fa-brands fa-facebook-f"></i></a>
+              <a href="http://www.instagram.com" target="_blank"><i class="fa-brands fa-instagram"></i></a>
+              <a href="http://www.twitter.com" target="_blank"><i class="fa-brands fa-twitter"></i></a>
             </div>
           </div>
         </div>
       </div>
     </nav>
-    <!-- start push popup -->
-    <div class="push-menu push-menu-style-3 p-50px bg-dark-gray">
-      <span class="close-menu text-dark-gray bg-white"><i class="fa-solid fa-xmark"></i></span>
-      <div class="push-menu-wrapper text-dark-gray" data-scroll-options='{ "theme": "light" }'>
-        <div class="w-100">
-          <h4 class="alt-font text-white fw-400 mb-30px d-block w-90 lh-40">Scalable business for <span
-              class="d-inline-block fw-600 border-3 border-bottom border-color-base-color">startups</span></h4>
-        </div>
-        <div class="col-12">
-          <ul class="fs-20 ps-0 alt-font">
-            <li class="pt-10px pb-10px w-100"><a class="facebook" href="https://www.facebook.com/" target="_blank"><i
-                  class="fa-brands fa-facebook-f w-30px text-start text-white"></i>Facebook</a></li>
-            <li class="pt-10px pb-10px w-100"><a class="instagram" href="https://www.instagram.com/" target="_blank"><i
-                  class="fa-brands fa-instagram w-30px text-start text-white"></i>Instagram</a></li>
-            <li class="pt-10px pb-10px w-100"><a class="twitter" href="https://twitter.com/" target="_blank"><i
-                  class="fa-brands fa-twitter w-30px text-start text-white"></i>Twitter</a></li>
-            <li class="pt-10px pb-10px w-100"><a class="dribbble" href="https://www.dribbble.com/" target="_blank"><i
-                  class="fa-brands fa-dribbble w-30px text-start text-white"></i>Dribbble</a></li>
-          </ul>
-        </div>
-        <div class="border-top border-color-transparent-white-light pt-30px w-100">
-          <span class="fs-24 fw-500 text-white"><a href="tel:12345678910">+1 234 567 8910</a></span>
-          <a href="mailto:info@domain.com">info@domain.com</a>
-        </div>
-      </div>
-    </div>
-    <!-- end push popup -->
+    <!-- end navigation -->
   </header>
   <!-- end header -->

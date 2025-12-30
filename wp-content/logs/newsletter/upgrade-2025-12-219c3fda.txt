@@ -1,0 +1,38 @@
+27-12-2025 14:39:53 - INFO  - 9.1.0 - 7.1 MB/256 MB - thrive > Start upgrade from 0.0.0
+27-12-2025 14:39:53 - INFO  - 9.1.0 - 6.9 MB/256 MB - thrive > Array
+(
+    [wp_newsletter_emails] => Created table `wp_newsletter_emails`
+)
+
+27-12-2025 14:39:53 - INFO  - 9.1.0 - 6.9 MB/256 MB - thrive > Array
+(
+    [wp_newsletter_sent] => Created table `wp_newsletter_sent`
+)
+
+27-12-2025 14:39:53 - INFO  - 9.1.0 - 6.9 MB/256 MB - thrive > Array
+(
+    [wp_newsletter] => Created table `wp_newsletter`
+)
+
+27-12-2025 14:39:53 - INFO  - 9.1.0 - 6.9 MB/256 MB - thrive > Array
+(
+    [wp_newsletter_user_logs] => Created table `wp_newsletter_user_logs`
+)
+
+27-12-2025 14:39:53 - INFO  - 9.1.0 - 6.9 MB/256 MB - thrive > Array
+(
+    [wp_newsletter_user_meta] => Created table `wp_newsletter_user_meta`
+)
+
+27-12-2025 14:39:53 - INFO  - 9.1.0 - 6.9 MB/256 MB - thrive > Array
+(
+    [wp_newsletter_stats] => Created table `wp_newsletter_stats`
+)
+
+27-12-2025 14:39:53 - INFO  - 9.1.0 - 6.9 MB/256 MB - thrive > Array
+(
+    [wp_newsletter_logs] => Created table `wp_newsletter_logs`
+)
+
+27-12-2025 14:39:53 - INFO  - 9.1.0 - 6.9 MB/256 MB - thrive > Backing up options of 0.0.0
+27-12-2025 14:39:53 - INFO  - 9.1.0 - 6.9 MB/256 MB - thrive > End
