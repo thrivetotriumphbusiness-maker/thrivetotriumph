@@ -6,7 +6,7 @@
   <div class="container">
     <div class="row justify-content-center pt-7 sm-pt-50px">
       <!-- start footer column -->
-      <div class="col-7 col-lg-3 col-md-12 col-sm-6 text-md-center text-lg-start md-mb-30px">
+      <div class="col-12 col-lg-6 col-md-12 text-center text-lg-start md-mb-30px">
         <a href="<?php echo esc_url(home_url()) ?>" class="footer-logo mb-15px md-mb-20px d-inline-block"><img
             src="<?php echo get_theme_file_uri('assets/images/thrive_logo_base.webp') ?>" data-at2x="<?php echo get_theme_file_uri(('assets/images/thrive_logo_base@2x.webp')) ?>" alt="Footer Logo"></a>
         <p class="mb-20px">Lorem ipsum dolor consectetur adipiscing eiusmod tempor.</p>
@@ -25,18 +25,17 @@
       </div>
       <!-- end footer column -->
       <!-- start footer column -->
-      <div class="col-5 col-lg-2 offset-xl-1 col-md-3 col-sm-6 md-mb-30px">
-        <span class="alt-font d-block text-dark-gray fw-600 mb-10px fs-19">Company</span>
+      <div class="col-6 col-lg-3 col-md-4 md-mb-30px useful-links">
+        <span class="alt-font d-block text-dark-gray fw-600 mb-10px fs-19">Useful Links</span>
         <ul>
-          <li><a href="demo-consulting-company.html">Company</a></li>
-          <li><a href="demo-consulting-services.html">Services</a></li>
-          <li><a href="demo-consulting-process.html">Process</a></li>
-          <li><a href="demo-consulting-contact.html">Contact</a></li>
+          <li><a href="<?php echo esc_url(site_url('/')) ?>" data-target="about" class="nav-link inner-link">About</a></li>
+          <li><a href="<?php echo esc_url(site_url('/')) ?>" data-target="service" class="nav-link inner-link">Services</a></li>
+          <li><a href="<?php echo esc_url(site_url('contact')) ?>">Contact</a></li>
         </ul>
       </div>
       <!-- end footer column -->
       <!-- start footer column -->
-      <div class="col-lg-3 col-md-4 col-sm-6 xs-mb-30px">
+      <div class="col-6 col-lg-3 col-md-4 xs-mb-30px">
         <span class="alt-font d-block text-dark-gray fw-600 mb-10px fs-19">Get in touch</span>
         <p class="mb-15px w-75 lg-w-85 sm-w-100">Broadway, 24th Floor New York, NY, 10013</p>
         <p class="m-0"><span class="fw-600"><i
@@ -48,22 +47,15 @@
       </div>
       <!-- end footer column -->
       <!-- start footer column -->
-      <div class="col-xl-3 col-lg-4 col-md-5 col-sm-6">
+       <?php if (false): ?>
+      <!-- <div class="col-xl-3 col-lg-4 col-md-5 col-sm-6">
         <span class="alt-font d-block text-dark-gray fw-600 mb-10px fs-19">Newsletter</span>
         <p class="sm-mb-20px">Subscribe our newsletter to get the latest news and updates.</p>
         <div class="d-inline-block w-100 newsletter-style-02 position-relative">
-          <form action="email-templates/subscribe-newsletter.php" method="post" class="position-relative w-100">
-            <input class="bg-transparent border-color-extra-medium-gray w-100 form-control required" type="email"
-              name="email" placeholder="Enter email address...">
-            <input type="hidden" name="redirect" value="">
-            <button class="btn submit" aria-label="submit"><i
-                class="icon feather icon-feather-mail icon-small text-base-color"></i></button>
-            <div
-              class="form-results border-radius-4px pt-5px pb-5px ps-15px pe-15px fs-14 lh-22 mt-10px w-100 text-center position-absolute d-none">
-            </div>
-          </form>
+          <?php echo do_shortcode('[newsletter_form form="1" button_label="Subs"]') ?>
         </div>
-      </div>
+      </div> -->
+      <?php endif; ?>
       <!-- end footer column -->
     </div>
     <div class="row justify-content-center align-items-center pt-5 sm-pt-30px">

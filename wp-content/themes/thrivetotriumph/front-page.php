@@ -32,7 +32,7 @@ get_header();
         <div
           class="row w-100 position-absolute md-position-relative bottom-0 mb-14 md-mb-0 md-mt-40px sm-mt-30px xs-mt-20px align-items-center"
           data-anime='{ "el": "childs", "opacity": [0, 1], "staggervalue": -200, "translateX": [-100, 0], "duration": 1000, "delay": 1700, "easing": "easeOutQuad" }'>
-          <div class="col-4 icon-with-text-style-08 xs-mb-15px">
+          <div class="col-6 col-md-4 icon-with-text-style-08 xs-mb-15px">
             <div class="feature-box feature-box-left-icon-middle overflow-hidden">
               <div
                 class="feature-box-icon feature-box-icon-rounded w-30px h-30px rounded-circle bg-jungle-green me-10px">
@@ -43,7 +43,7 @@ get_header();
               </div>
             </div>
           </div>
-          <div class="col-4 icon-with-text-style-08 xs-mb-15px">
+          <div class="col-6 col-md-4 icon-with-text-style-08 xs-mb-15px">
             <div class="feature-box feature-box-left-icon-middle overflow-hidden">
               <div
                 class="feature-box-icon feature-box-icon-rounded w-30px h-30px rounded-circle bg-jungle-green me-10px">
@@ -54,7 +54,7 @@ get_header();
               </div>
             </div>
           </div>
-          <div class="col-4 icon-with-text-style-08">
+          <div class="col-6 col-md-4 icon-with-text-style-08">
             <div class="feature-box feature-box-left-icon-middle overflow-hidden">
               <div
                 class="feature-box-icon feature-box-icon-rounded w-30px h-30px rounded-circle bg-jungle-green me-10px">

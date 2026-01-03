@@ -86,3 +86,11 @@ footer .footer-logo img {
     margin-top: 0;
   }
 }
+
+footer{
+  .useful-links{
+    ul > li a.nav-link{
+      padding: 0;
+    }
+  }
+}

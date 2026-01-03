@@ -23,6 +23,7 @@ class Nav {
       }
     });
     $(".nav-link").on("click", function (e) {
+      $('.navbar-collapse.collapse').collapse('hide');
       const navLink = $(e.target).closest(".nav-link");
       const dataTarget = navLink.data("target");
       console.log("AKORAA", navLink, dataTarget);
@@ -31,6 +32,11 @@ class Nav {
           path: "/",
         });
         if (document.getElementById(dataTarget)) {
+          console.log('JONOas',
+            getComputedStyle(document.body).overflow,
+            getComputedStyle(document.body).position,
+            document.elementFromPoint(10, 10)
+          );
           document.getElementById(dataTarget).scrollIntoView({
             behavior: "smooth",
             block: "start",

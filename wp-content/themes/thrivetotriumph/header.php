@@ -74,15 +74,15 @@ if (!function_exists('wp_body_open')) {
           <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
               <li class="nav-item"><a href="<?php echo esc_url(site_url('/')); ?>" data-target="about"
-                  class="nav-link">About</a></li>
+                  class="nav-link inner-link">About</a></li>
               <li class="nav-item"><a href="<?php echo esc_url(site_url('/')); ?>" data-target="client"
-                  class="nav-link">Clients</a></li>
+                  class="nav-link inner-link">Clients</a></li>
               <li class="nav-item"><a href="<?php echo esc_url(site_url('/')); ?>" data-target="service"
-                  class="nav-link">Services</a></li>
+                  class="nav-link inner-link">Services</a></li>
               <li class="nav-item"><a href="<?php echo esc_url(site_url('/')); ?>" data-target="why-choose-us"
-                  class="nav-link">Why Choose Us</a></li>
+                  class="nav-link inner-link">Why Choose Us</a></li>
               <li class="nav-item"><a href="<?php echo esc_url(site_url('/')); ?>" data-target="testimonial"
-                  class="nav-link">Testimonials</a></li>
+                  class="nav-link inner-link">Testimonials</a></li>
               <li class="nav-item"><a href="<?php echo esc_url(site_url('contact')); ?>" class="nav-link">Contact</a>
               </li>
             </ul>

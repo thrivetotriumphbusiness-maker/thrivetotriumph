@@ -1,29 +1,30 @@
 <?php
 get_header();
 ?>
-		<div class="content-area top-space-margin half-section">
-			<main>
-				<div class="container">
-					<div class="row">
-						<?php 
-							// If there are any posts
-							if( have_posts() ):
+<main>
+	<section>
+		<div class="container">
+			<div class="row">
+				<?php
+				// If there are any posts
+				if (have_posts()):
 
-								// Load posts loop
-								while( have_posts() ): the_post();
-									?>
-										<article class="col">
-											<h1 class="alt-font text-dark-gray text-uppercase ls-minus-1px mb-25px"><?php the_title(); ?></h1>
-											<div><?php the_content(); ?></div>
-										</article>
-									<?php
-								endwhile;
-							else:
+					// Load posts loop
+					while (have_posts()):
+						the_post();
 						?>
-							<p>Nothing to display.</p>
-						<?php endif; ?>
-					</div>
-				</div>
-			</main>
+						<article class="col">
+							<h1 class="alt-font text-dark-gray text-uppercase ls-minus-1px mb-25px"><?php the_title(); ?></h1>
+							<div><?php the_content(); ?></div>
+						</article>
+						<?php
+					endwhile;
+				else:
+					?>
+					<p>Nothing to display.</p>
+				<?php endif; ?>
+			</div>
 		</div>
+	</section>
+</main>
 <?php get_footer(); ?>
