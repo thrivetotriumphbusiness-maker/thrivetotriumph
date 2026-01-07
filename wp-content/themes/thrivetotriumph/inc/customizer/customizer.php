@@ -20,5 +20,7 @@ function initialize_kirki_settings()
     return;
   }
   
+  require_once __DIR__.'/general-customizer.php';
   require_once __DIR__.'/home-customizer.php';
+  require_once __DIR__.'/contact-customizer.php';
 }

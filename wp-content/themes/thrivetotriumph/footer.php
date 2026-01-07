@@ -8,18 +8,20 @@
       <!-- start footer column -->
       <div class="col-12 col-lg-6 col-md-12 text-center text-lg-start md-mb-30px">
         <a href="<?php echo esc_url(home_url()) ?>" class="footer-logo mb-15px md-mb-20px d-inline-block"><img
-            src="<?php echo get_theme_file_uri('assets/images/thrive_logo_base.webp') ?>" data-at2x="<?php echo get_theme_file_uri(('assets/images/thrive_logo_base@2x.webp')) ?>" alt="Footer Logo"></a>
-        <p class="mb-20px">Lorem ipsum dolor consectetur adipiscing eiusmod tempor.</p>
+            src="<?php echo get_theme_file_uri('assets/images/thrive_logo_base.webp') ?>"
+            data-at2x="<?php echo get_theme_file_uri(('assets/images/thrive_logo_base@2x.webp')) ?>"
+            alt="Footer Logo"></a>
+        <p class="mb-20px"><?php echo get_theme_mod('set_footer_site_desc') ?></p>
         <div class="elements-social social-icon-style-02">
           <ul class="medium-icon dark icon-with-animation">
-            <li><a class="facebook" href="https://www.facebook.com/" target="_blank"><i
-                  class="fa-brands fa-facebook-f"></i></a></li>
-            <li><a class="dribbble" href="http://www.dribbble.com" target="_blank"><i
-                  class="fa-brands fa-dribbble"></i></a></li>
-            <li><a class="twitter" href="http://www.twitter.com" target="_blank"><i
-                  class="fa-brands fa-twitter"></i></a></li>
-            <li><a class="instagram" href="http://www.instagram.com" target="_blank"><i
-                  class="fa-brands fa-instagram"></i></a></li>
+            <?php if (have_rows('comp_sosmed_links', 'option')) {
+              while (have_rows('comp_sosmed_links', 'option')) {
+                the_row();
+                ?>
+                <li><a rel="noopener noreferrer" href="<?php echo get_sub_field('comp_sosmed_url') ?>" target="_blank"><i
+                      class="<?php echo get_sub_field('comp_sosmed_icon') ?>"></i></a></li>
+              <?php }
+            } ?>
           </ul>
         </div>
       </div>
@@ -28,8 +30,10 @@
       <div class="col-6 col-lg-3 col-md-4 md-mb-30px useful-links">
         <span class="alt-font d-block text-dark-gray fw-600 mb-10px fs-19">Useful Links</span>
         <ul>
-          <li><a href="<?php echo esc_url(site_url('/')) ?>" data-target="about" class="nav-link inner-link">About</a></li>
-          <li><a href="<?php echo esc_url(site_url('/')) ?>" data-target="service" class="nav-link inner-link">Services</a></li>
+          <li><a href="<?php echo esc_url(site_url('/')) ?>" data-target="about" class="nav-link inner-link">About</a>
+          </li>
+          <li><a href="<?php echo esc_url(site_url('/')) ?>" data-target="service"
+              class="nav-link inner-link">Services</a></li>
           <li><a href="<?php echo esc_url(site_url('contact')) ?>">Contact</a></li>
         </ul>
       </div>
@@ -37,18 +41,18 @@
       <!-- start footer column -->
       <div class="col-6 col-lg-3 col-md-4 xs-mb-30px">
         <span class="alt-font d-block text-dark-gray fw-600 mb-10px fs-19">Get in touch</span>
-        <p class="mb-15px w-75 lg-w-85 sm-w-100">Broadway, 24th Floor New York, NY, 10013</p>
+        <p class="mb-15px w-75 lg-w-85 sm-w-100"><?php the_field('comp_address', 'option'); ?></p>
         <p class="m-0"><span class="fw-600"><i
-              class="feather icon-feather-phone-call text-dark-gray icon-small me-10px"></i></span><a
-            href="tel:1800222000">1-800-222-000</a></p>
+              class="feather icon-feather-phone-call text-dark-gray icon-small me-10px"></i></span><a href="tel:<?php the_field('comp_phone_number', 'option'); ?>"
+                      class="text-base-color-hover"><?php the_field('comp_phone_number', 'option'); ?></a></p>
         <p class="m-0"><span class="fw-600"><i
-              class="feather icon-feather-mail text-dark-gray icon-small me-10px"></i></span><a
-            href="mailto:info@domain.com">info@domain.com</a></p>
+              class="feather icon-feather-mail text-dark-gray icon-small me-10px"></i></span> <a href="mailto:<?php the_field('comp_email', 'option'); ?>"
+                    class="text-base-color-hover"><?php the_field('comp_email', 'option'); ?></a></p>
       </div>
       <!-- end footer column -->
       <!-- start footer column -->
-       <?php if (false): ?>
-      <!-- <div class="col-xl-3 col-lg-4 col-md-5 col-sm-6">
+      <?php if (false): ?>
+        <!-- <div class="col-xl-3 col-lg-4 col-md-5 col-sm-6">
         <span class="alt-font d-block text-dark-gray fw-600 mb-10px fs-19">Newsletter</span>
         <p class="sm-mb-20px">Subscribe our newsletter to get the latest news and updates.</p>
         <div class="d-inline-block w-100 newsletter-style-02 position-relative">
@@ -67,13 +71,14 @@
       <!-- start copyright -->
       <div
         class="col-lg-6 pt-25px pb-25px md-pt-0 fs-16 last-paragraph-no-margin order-2 order-lg-1 text-center text-lg-start">
-        <p>&copy; 2026 thrivetotriumph</p>
+        <p><?php echo wp_kses_post(wp_specialchars_decode(get_theme_mod('set_copyright_text'))) ?></p>
       </div>
       <!-- end copyright -->
       <!-- start footer menu -->
       <div class="col-lg-6 pt-25px pb-25px md-pb-5px fs-16 order-1 order-lg-2 text-center text-lg-end">
         <ul class="footer-navbar md-lh-normal">
-          <li class="nav-item"><a href="<?php echo esc_url(site_url('privacy-policy')) ?>" class="nav-link">Privacy policy</a></li>
+          <li class="nav-item"><a href="<?php echo esc_url(site_url('privacy-policy')) ?>" class="nav-link">Privacy
+              policy</a></li>
           <!-- <li class="nav-item"><a href="#" class="nav-link">Terms and conditions</a></li>
           <li class="nav-item"><a href="#" class="nav-link">Copyright</a></li> -->
         </ul>

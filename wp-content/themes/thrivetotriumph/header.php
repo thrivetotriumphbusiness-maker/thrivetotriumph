@@ -91,9 +91,14 @@ if (!function_exists('wp_body_open')) {
         <div class="col-auto col-lg-2 text-end">
           <div class="header-icon">
             <div class="header-social-icon icon">
-              <a href="http://www.facebook.com" target="_blank"><i class="fa-brands fa-facebook-f"></i></a>
-              <a href="http://www.instagram.com" target="_blank"><i class="fa-brands fa-instagram"></i></a>
-              <a href="http://www.twitter.com" target="_blank"><i class="fa-brands fa-twitter"></i></a>
+              <?php if (have_rows('comp_sosmed_links', 'option')) {
+                while (have_rows('comp_sosmed_links', 'option')) {
+                  the_row();
+                  ?>
+                  <a rel="noopener noreferrer" href="<?php echo get_sub_field('comp_sosmed_url') ?>" target="_blank"><i
+                      class="<?php echo get_sub_field('comp_sosmed_icon') ?>"></i></a>
+                <?php }
+              } ?>
             </div>
           </div>
         </div>

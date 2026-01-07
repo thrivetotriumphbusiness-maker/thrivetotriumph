@@ -1,0 +1,13 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "alb/general-sec-container-block",
+  "title": "General Section Container Block for Alb Site",
+  "category": "alb-blocks",
+  "icon": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxNiIgaGVpZ2h0PSIxNiIgZmlsbD0iY3VycmVudENvbG9yIiBjbGFzcz0iYmkgYmktYm91bmRpbmctYm94LWNpcmNsZXMiIHZpZXdCb3g9IjAgMCAxNiAxNiI+CiAgPHBhdGggZD0iTTIgMWExIDEgMCAxIDAgMCAyIDEgMSAwIDAgMCAwLTJNMCAyYTIgMiAwIDAgMSAzLjkzNy0uNWg4LjEyNkEyIDIgMCAxIDEgMTQuNSAzLjkzN3Y4LjEyNmEyIDIgMCAxIDEtMi40MzcgMi40MzdIMy45MzdBMiAyIDAgMSAxIDEuNSAxMi4wNjNWMy45MzdBMiAyIDAgMCAxIDAgMm0yLjUgMS45Mzd2OC4xMjZjLjcwMy4xOCAxLjI1Ni43MzQgMS40MzcgMS40MzdoOC4xMjZhMiAyIDAgMCAxIDEuNDM3LTEuNDM3VjMuOTM3QTIgMiAwIDAgMSAxMi4wNjMgMi41SDMuOTM3QTIgMiAwIDAgMSAyLjUgMy45MzdNMTQgMWExIDEgMCAxIDAgMCAyIDEgMSAwIDAgMCAwLTJNMiAxM2ExIDEgMCAxIDAgMCAyIDEgMSAwIDAgMCAwLTJtMTIgMGExIDEgMCAxIDAgMCAyIDEgMSAwIDAgMCAwLTIiLz4KPC9zdmc+",
+  "description": "Alb General Section Container Block",
+  "attributes": {},
+  "editorScript": "file:./index.js",
+  "editorStyle": "file:./index.css",
+  "render": "file:./render.php"
+}

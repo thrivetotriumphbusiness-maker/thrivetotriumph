@@ -1,7 +1,4 @@
 <?php
-if (!is_user_logged_in() or is_page('about')) {
-  wp_redirect(esc_url(site_url('/')));
-}
 get_header();
 while (have_posts()) {
 	the_post();

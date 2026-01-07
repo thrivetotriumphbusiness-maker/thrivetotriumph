@@ -65,6 +65,13 @@ function mytheme_comment($comment, $args, $depth)
     </div>
     <?php
 }
+function myCustomBlocks()
+{
+  register_block_type_from_metadata(__DIR__ . '/build/general-sec-container-block');
+  register_block_type_from_metadata(__DIR__ . '/build/general-heading-block');
+}
+
+add_action('init', 'myCustomBlocks');
 
 function my_block_editor_assets_regis()
 {
@@ -89,6 +96,7 @@ function my_web_config()
 
   add_editor_style(['build/rich-text-custom-formats.css']);
 
+  add_image_size('page_slider', 1920, 560, true);
   add_image_size('section_image1', 600, 600, true);
   add_image_size('section_image2', 960, 762, true);
 
@@ -338,6 +346,14 @@ add_filter('login_headerurl', 'ourHeaderUrl');
 
 add_action('login_enqueue_scripts', function () {
   wp_enqueue_style('custom-login', get_theme_file_uri('/build/login.css'));
+});
+
+// Prevent to single page for selected pages and posts
+add_action('template_redirect', function () {
+  if (is_single() && (get_post_type() === 'service' || get_post_type() === 'client' || get_post_type() === 'testimonial')) {
+    wp_redirect(home_url(), 301);
+    exit;
+  }
 });
 
 function prevent_blocks($allowed_blocks, $editor_context)

@@ -7,17 +7,29 @@ get_header();
   style="background-image: url('<?php echo get_theme_file_uri('assets/images/bg-dot.svg') ?>')">
   <div class="bg-gradient-black-green position-absolute left-0px top-0px h-100 w-100 z-index-minus-1"></div>
   <div class="container h-100">
+    <?php
+    $set_home_header_secondary_text = get_theme_mod('set_home_header_secondary_text');
+    $text_data = [];
+    if ($set_home_header_secondary_text) {
+      foreach ($set_home_header_secondary_text as $item) {
+        array_push($text_data, $item['secondary_text']);
+      }
+    }
+    ?>
     <div class="row align-items-center h-100">
       <div class="col-lg-6 col-md-9 position-relative z-index-1 d-flex flex-column justify-content-center h-100">
         <div class="fs-120 lg-fs-100 text-dark-gray lh-100 fw-500 mb-6 ls-minus-5px fancy-text-style-4"
           data-anime='{ "el": "childs", "opacity": [0, 1], "translateX": [-100, 0], "staggervalue": 300, "duration": 1000, "easing": "easeOutCubic" }'>
-          <span class="d-inline-block fs-70">Personal development</span>
-          <span class="fw-700 d-inline-block"
-            data-fancy-text='{ "effect": "wave", "string": ["mindset", "skills", "growth"], "duration": 4000 }'></span>
+          <h1 class="d-inline-block fs-70 mb-0 ls-minus-5px"><?php echo get_theme_mod('set_home_header_title') ?></h1>
+          <h2 class="fw-700 d-inline-block mb-0 fs-120" data-fancy-text='{ "effect": "wave", "string": <?php if ($text_data) {
+            echo json_encode($text_data);
+          } else {
+            echo '';
+          } ?>, "duration": 4000 }'></h2>
         </div>
         <div class="fs-20 lh-34 xs-fs-19 mb-35px xs-mb-20px w-85 lg-w-95 sm-w-100 ls-minus-05px"
           data-anime='{ "opacity": [0, 1], "translateX": [-100, 0], "duration": 1000, "delay": 1000, "easing": "easeOutCubic" }'>
-          Consulting and training solutions that drive organizational and human capital growth.</div>
+          <?php echo get_theme_mod('set_home_header_desc') ?></div>
         <div
           data-anime='{ "el": "childs", "opacity": [0, 1], "translateX": [-100, 0], "staggervalue": -200, "duration": 1000, "delay": 1500, "easing": "easeOutCubic" }'>
           <a href="#about"
@@ -188,8 +200,8 @@ if ($about_page->have_posts()):
               <span
                 class="fw-600 ls-1px fs-16 alt-font d-inline-block text-uppercase mb-5px text-base-color"><?php echo get_field('about_sec_subtitle') ?></span>
             <?php } ?>
-            <h2 class="fw-600 text-dark-gray ls-minus-2px"><?php echo get_field('about_sec_title') ?>
-            </h2>
+            <h3 class="fw-600 text-dark-gray ls-minus-2px"><?php echo get_field('about_sec_title') ?>
+            </h3>
             <p class="w-90 lg-w-100 md-mx-auto mb-35px"><?php echo apply_filters('the_content', get_the_content(null, false));
             ?></p>
           </div>
@@ -254,7 +266,7 @@ endif;
         data-anime='{"opacity": [0,1], "duration": 600, "delay": 0, "staggervalue": 300, "easing": "easeOutQuad" }'>
         <span class="fw-600 ls-1px fs-16 alt-font d-inline-block text-uppercase mb-5px text-base-color">Innovative
           solutions</span>
-        <h2 class="alt-font text-dark-gray fw-600 ls-minus-2px">Consulting services</h2>
+        <h3 class="alt-font text-dark-gray fw-600 ls-minus-2px">Consulting services</h3>
       </div>
     </div>
     <div class="row row-cols-1 row-cols-lg-3 row-cols-md-2 justify-content-center"
@@ -345,7 +357,7 @@ if ($about_page->have_posts()):
               <span
                 class="fw-600 ls-1px fs-16 alt-font d-inline-block text-uppercase mb-5px text-ternary-color"><?php echo get_field('why_choose_us_subtitle') ?></span>
             <?php } ?>
-            <h2 class="text-dark-gray fw-600 ls-minus-2px mb-15px"><?php echo get_field('why_choose_us_title') ?></h2>
+            <h3 class="text-dark-gray fw-600 ls-minus-2px mb-15px"><?php echo get_field('why_choose_us_title') ?></h3>
             <div class="accordion accordion-style-02" id="accordion-style-02" data-active-icon="fa-angle-down"
               data-inactive-icon="fa-angle-right">
               <?php
@@ -408,8 +420,8 @@ if ($about_page->have_posts()):
         <div class="row justify-content-center"
           data-anime='{ "el": "childs", "translateY": [0, 0], "opacity": [0,1], "duration": 600, "delay": 0, "staggervalue": 100, "easing": "easeOutQuad" }'>
           <div class="col-12 fs-22 fw-500 ls-minus-1px text-dark-gray text-center">
-            Save your precious time and effort spent for finding a solution. <a
-              class="text-dark-gray text-decoration-line-bottom d-inline-block" href="demo-consulting-contact.html">Contact
+            Save Time and Effort with Proven Solutions. <a
+              class="text-dark-gray text-decoration-line-bottom d-inline-block" href="<?php echo esc_url(site_url('contact')) ?>">Contact
               us now</a>
           </div>
         </div>
@@ -435,15 +447,19 @@ $sec_testimonial_img_alt = get_post_meta($sec_testimonial_img, '_wp_attachment_i
       <div class="col-lg-6 col-md-10 contact-form-style-03 md-mb-50px sm-mb-30px"
         data-anime='{ "el": "childs", "translateX": [50, 0], "opacity": [0,1], "duration": 600, "delay": 0, "staggervalue": 100, "easing": "easeOutQuad" }'>
         <figure class="position-relative m-0">
-          <img class="border-radius-15px w-100" src="<?php if ($sec_testimonial_img_url) {echo $sec_testimonial_img_url;} else {echo 'https://placehold.co/600x600';} ?>" alt="">
+          <img class="border-radius-15px w-100" src="<?php if ($sec_testimonial_img_url) {
+            echo $sec_testimonial_img_url;
+          } else {
+            echo 'https://placehold.co/600x600';
+          } ?>" alt="">
           <figcaption
             class="position-absolute text-center border-radius-15px right-30px bottom-30px ps-30px pe-30px blur-box bg-white-transparent">
-            <h2 class="fs-60 mx-auto mb-0 fw-600 text-dark-gray mt-20px">4.9</h2>
-            <div class="text-base-color ls-2px lh-20">
-              <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i
-                class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
-            </div>
-            <span class="text-dark-gray mb-20px d-inline-block">Verified score</span>
+            <h3 class="fs-60 mx-auto mb-0 fw-600 text-dark-gray mt-20px">4.9</h2>
+              <div class="text-base-color ls-2px lh-20">
+                <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i
+                  class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+              </div>
+              <span class="text-dark-gray mb-20px d-inline-block">Verified score</span>
           </figcaption>
         </figure>
       </div>
@@ -453,8 +469,8 @@ $sec_testimonial_img_alt = get_post_meta($sec_testimonial_img, '_wp_attachment_i
           <span
             class="fs-20 fw-500 text-base-color d-block mb-20px"><?php echo get_theme_mod('set_home_testimonial_subtitle') ?></span>
         <?php endif; ?>
-        <h2 class="fw-600 text-dark-gray ls-minus-2px mb-35px"><?php echo get_theme_mod('set_home_testimonial_title') ?>
-        </h2>
+        <h3 class="fw-600 text-dark-gray ls-minus-2px mb-35px"><?php echo get_theme_mod('set_home_testimonial_title') ?>
+        </h3>
         <div class="swiper position-relative magic-cursor"
           data-slider-options='{ "autoHeight": true, "loop": true, "allowTouchMove": true, "autoplay": { "delay": 4000, "disableOnInteraction": false }, "navigation": { "nextEl": ".swiper-button-next", "prevEl": ".swiper-button-prev" }, "effect": "fade" }'>
           <div class="swiper-wrapper mb-50px lg-mb-35px">
