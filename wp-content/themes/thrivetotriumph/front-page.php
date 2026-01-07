@@ -29,7 +29,8 @@ get_header();
         </div>
         <div class="fs-20 lh-34 xs-fs-19 mb-35px xs-mb-20px w-85 lg-w-95 sm-w-100 ls-minus-05px"
           data-anime='{ "opacity": [0, 1], "translateX": [-100, 0], "duration": 1000, "delay": 1000, "easing": "easeOutCubic" }'>
-          <?php echo get_theme_mod('set_home_header_desc') ?></div>
+          <?php echo get_theme_mod('set_home_header_desc') ?>
+        </div>
         <div
           data-anime='{ "el": "childs", "opacity": [0, 1], "translateX": [-100, 0], "staggervalue": -200, "duration": 1000, "delay": 1500, "easing": "easeOutCubic" }'>
           <a href="#about"
@@ -80,9 +81,18 @@ get_header();
         </div>
       </div>
       <div class="col-lg-5 offset-lg-1 col-md-3 align-self-end d-none d-md-inline-block">
+        <?php
+        $home_header_img = get_theme_mod('set_home_header_image');
+        $home_header_img_url = wp_get_attachment_image_url($home_header_img, 'home_header_image');
+        $home_header_img_alt = get_post_meta($home_header_img, '_wp_attachment_image_alt', true);
+        ?>
         <div
           class="position-absolute right-0px bottom-minus-90px xxl-bottom-minus-30px md-bottom-minus-35px md-right-minus-250px lg-right-minus-150px w-50 xl-w-55 lg-w-65 md-w-75 overflow-hidden">
-          <img src="<?php echo get_theme_file_uri('assets/images/thrive-home-graph-bg.webp') ?>" class="w-100" alt=""
+          <img src="<?php if ($home_header_img_url) {
+            echo $home_header_img_url;
+          } else {
+            echo 'https://placehold.co/950x970';
+          } ?>" class="w-100" alt="<?php echo $home_header_img_alt ?>"
             data-anime='{ "opacity": [0, 1], "translateX": [100, 0], "duration": 1000, "delay": 200, "easing": "easeOutQuad" }'>
         </div>
         <div
@@ -420,8 +430,8 @@ if ($about_page->have_posts()):
         <div class="row justify-content-center"
           data-anime='{ "el": "childs", "translateY": [0, 0], "opacity": [0,1], "duration": 600, "delay": 0, "staggervalue": 100, "easing": "easeOutQuad" }'>
           <div class="col-12 fs-22 fw-500 ls-minus-1px text-dark-gray text-center">
-            Save Time and Effort with Proven Solutions. <a
-              class="text-dark-gray text-decoration-line-bottom d-inline-block" href="<?php echo esc_url(site_url('contact')) ?>">Contact
+            Save Time and Effort with Proven Solutions. <a class="text-dark-gray text-decoration-line-bottom d-inline-block"
+              href="<?php echo esc_url(site_url('contact')) ?>">Contact
               us now</a>
           </div>
         </div>
@@ -451,7 +461,7 @@ $sec_testimonial_img_alt = get_post_meta($sec_testimonial_img, '_wp_attachment_i
             echo $sec_testimonial_img_url;
           } else {
             echo 'https://placehold.co/600x600';
-          } ?>" alt="">
+          } ?>" alt="<?php echo $sec_testimonial_img_alt ?>">
           <figcaption
             class="position-absolute text-center border-radius-15px right-30px bottom-30px ps-30px pe-30px blur-box bg-white-transparent">
             <h3 class="fs-60 mx-auto mb-0 fw-600 text-dark-gray mt-20px">4.9</h2>

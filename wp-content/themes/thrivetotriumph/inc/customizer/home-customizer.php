@@ -4,6 +4,7 @@ if (!defined('ABSPATH')) {
 }
 
 $image_size1_section = get_image_sizes('section_image1');
+$home_header_image = get_image_sizes('home_header_image');
 
 new \Kirki\Panel(
   'panel_cust_page_home',
@@ -74,6 +75,18 @@ new \Kirki\Field\Text(
     'input_attrs' => [
       'maxlength' => 150,
     ]
+  ]
+);
+
+new \Kirki\Field\Image(
+  [
+    'settings' => 'set_home_header_image',
+    'label' => esc_html__('Header Image', 'thrive'),
+    'section' => 'sec_home_header',
+    'description' => "For best result the resolutions is $home_header_image[width] X $home_header_image[height] or higher",
+    'choices' => [
+      'save_as' => 'id',
+    ],
   ]
 );
 

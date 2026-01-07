@@ -99,6 +99,7 @@ function my_web_config()
   add_image_size('page_slider', 1920, 560, true);
   add_image_size('section_image1', 600, 600, true);
   add_image_size('section_image2', 960, 762, true);
+  add_image_size('home_header_image', 950, 970, true);
 
 }
 add_action('after_setup_theme', 'my_web_config');
