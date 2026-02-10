@@ -1,4 +1,6 @@
 @use 'variables';
+@use 'modules/reset_wysiwyg';
 @use "modules/menu";
 @use "modules/wp_block";
+@use "modules/page";
 @use "modules/global";

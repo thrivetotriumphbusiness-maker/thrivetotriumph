@@ -47,10 +47,72 @@
 // }
 
 /* header */
-.navbar .navbar-nav .nav-link {
-  font-size: 18px;
-}
+// .navbar .navbar-nav .nav-link {
+//   font-size: 18px;
+// }
 
+// header .navbar-brand img {
+//   max-height: 50px;
+// }
+
+// footer .footer-logo img {
+//   max-height: 50px;
+// }
+
+// .navbar .navbar-nav .simple-dropdown .dropdown-menu {
+//   width: 260px;
+// }
+
+// .navbar .navbar-nav .simple-dropdown .dropdown-menu li a {
+//   font-size: 16px;
+//   line-height: 30px;
+//   font-weight: 500;
+// }
+
+// .navbar .navbar-nav .dropdown.dropdown-with-icon .dropdown-menu {
+//   width: 360px;
+// }
+
+// .header-icon .header-social-icon a {
+//   font-size: 17px;
+//   padding-left: 23px;
+// }
+
+/* header */
+.sticky, .sticky-active{
+  .navbar{
+    @media (max-width: 767.98px) {
+      top: 0px !important;
+    }
+  }
+}
+.navbar .navbar-nav .nav-link {
+    font-size: 18px;
+    font-family: 'cerebri-sans-medium' !important;
+}
+.navbar {
+  .navbar-nav {
+    .nav-item{
+      &.active{
+        .nav-link{
+          opacity: 1;
+          color : var(--base-color);
+        }
+      }
+    }
+  }
+}
+.navbar .navbar-nav .dropdown .dropdown-menu a {
+    font-size: 16px;
+    line-height: 28px;
+    font-family: 'cerebri-sans-regular' !important; 
+}
+header .btn.btn-small {
+    font-size: 14px
+}
+header .btn.btn-small i {
+    top:-2px;
+}
 header .navbar-brand img {
   max-height: 50px;
 }
@@ -58,24 +120,22 @@ header .navbar-brand img {
 footer .footer-logo img {
   max-height: 50px;
 }
-
-.navbar .navbar-nav .simple-dropdown .dropdown-menu {
-  width: 260px;
+.navbar .navbar-nav .dropdown.dropdown-with-icon-style02 .dropdown-menu {
+    width: 300px;
 }
-
-.navbar .navbar-nav .simple-dropdown .dropdown-menu li a {
-  font-size: 16px;
-  line-height: 30px;
-  font-weight: 500;
+.navbar .navbar-nav .dropdown.dropdown-with-icon-style02 .dropdown-menu li a {
+    border-bottom: 1px solid var(--very-light-gray);
+    padding: 20px 30px;
+    font-size: 17px;
+    color: var(--dark-gray) !important; 
+    font-family: 'cerebri-sans-medium' !important;
 }
-
-.navbar .navbar-nav .dropdown.dropdown-with-icon .dropdown-menu {
-  width: 360px;
+.navbar .navbar-nav .dropdown.dropdown-with-icon-style02 .dropdown-menu li a:hover{
+    background-color: var(--very-light-gray);
 }
-
-.header-icon .header-social-icon a {
-  font-size: 17px;
-  padding-left: 23px;
+.navbar .navbar-nav .dropdown.dropdown-with-icon-style02 .dropdown-menu li a img {
+    width: 40px;
+    margin-right: 10px;
 }
 
 //Banner

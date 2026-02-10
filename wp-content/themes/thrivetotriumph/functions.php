@@ -7,7 +7,7 @@ if (!defined('ABSPATH')) {
 require_once get_template_directory() . '/inc/customizer/customizer.php';
 
 define('STRICT_ROLES', ['web_manager']);
-define('STRICT_PAGES', ['home', 'privacy-policy', 'about']);
+define('STRICT_PAGES', ['home', 'privacy-policy', 'about', 'clients', 'contact']);
 
 function get_image_sizes($size = '')
 {
@@ -93,14 +93,15 @@ function my_web_config()
   add_theme_support('widgets');
   add_theme_support('editor-styles');
 
-
   add_editor_style(['build/rich-text-custom-formats.css']);
 
+  add_image_size('main_slider', 1920, 1100, true);
   add_image_size('page_slider', 1920, 560, true);
+  add_image_size('service_image', 600, 440, true);
+  add_image_size('training_program_image', 600, 520, true);
   add_image_size('section_image1', 600, 600, true);
   add_image_size('section_image2', 960, 762, true);
-  add_image_size('home_header_image', 950, 970, true);
-
+  add_image_size('coach_image', 200, 200, true);
 }
 add_action('after_setup_theme', 'my_web_config');
 
@@ -225,12 +226,20 @@ function change_title_placeholder($title)
 {
   $screen = get_current_screen();
 
+  if ('coach' === $screen->post_type) {
+    return 'Add Coach Name';
+  }
+
   if ('client' === $screen->post_type) {
     return 'Add Client Name';
   }
 
   if ('service' === $screen->post_type) {
     return 'Add Service Name';
+  }
+
+  if ('training_program' === $screen->post_type) {
+    return 'Add Training Program Name';
   }
 
   if ('testimonial' === $screen->post_type) {
@@ -351,7 +360,7 @@ add_action('login_enqueue_scripts', function () {
 
 // Prevent to single page for selected pages and posts
 add_action('template_redirect', function () {
-  if (is_single() && (get_post_type() === 'service' || get_post_type() === 'client' || get_post_type() === 'testimonial')) {
+  if (is_single() && (get_post_type() === 'service' || get_post_type() === 'testimonial')) {
     wp_redirect(home_url(), 301);
     exit;
   }
@@ -363,6 +372,8 @@ function prevent_blocks($allowed_blocks, $editor_context)
 
   if ($editor_context->post && in_array(strtolower($editor_context->post->post_name), $target_pages)) {
     return [
+      'core/heading',
+      'alb/general-heading-block',
       'core/paragraph',
       'core/list',
       'core/math',
@@ -375,6 +386,9 @@ function prevent_blocks($allowed_blocks, $editor_context)
 }
 
 add_filter('allowed_block_types_all', 'prevent_blocks', 10, 2);
+
+add_filter('excerpt_length', function ($length) {
+  return 20; });
 
 
 // Remove

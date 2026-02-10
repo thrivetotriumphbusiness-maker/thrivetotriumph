@@ -234,6 +234,11 @@ function cfturnstile_check($postdata = "") {
 		$verify = wp_remote_retrieve_body($verify);
 		$response = json_decode($verify);
 
+		if ( ! is_object( $response ) ) {
+			$results['success'] = false;
+			return $results;
+		}
+
 		if($response->success) {
 			$results['success'] = $response->success;
 		} else {

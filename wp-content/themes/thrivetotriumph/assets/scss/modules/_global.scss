@@ -5,3 +5,75 @@
 .bg-ternary-color {
   background-color: var(--ternary-color);
 }
+
+.text-secondary-color{
+  color: var(--secondary-color);
+}
+
+.bg-secondary-color {
+  background-color: var(--secondary-color);
+}
+
+.text-w-image {
+  &__image-wrapper {
+    width: 100%;
+    margin-right: 40px;
+
+    @media (min-width: 768px) {
+      width: 50%;
+      float: left;
+    }
+  }
+}
+
+// GRID
+.row-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+
+  @media (min-width: 1400px) {
+    grid-template-columns: repeat(4, minmax(300px, 1fr));
+  }
+
+  @media (min-width: 992px) {
+    grid-template-columns: repeat(3, minmax(300px, 1fr));
+  }
+
+  &--4 {
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+
+    @media (min-width: 992px) {
+      grid-template-columns: repeat(4, minmax(250px, 1fr));
+    }
+  }
+
+  @for $i from 1 through 5 {
+    &.gap-#{$i} {
+      gap: #{$i*10}px;
+    }
+  }
+
+  @for $i from 1 through 5 {
+    &.gap-half-#{$i} {
+      gap: #{$i*10-5}px;
+    }
+  }
+
+  .col-grid {
+    display: grid;
+    grid-row: span 1;
+    grid-template-rows: max-content max-content;
+    grid-template-rows: subgrid;
+  }
+}
+
+footer{
+  color: var(--dark-gray);
+  a.nav-link{
+    color: var(--dark-gray);
+  }
+  a {
+    color: inherit;
+  }
+}

@@ -4,7 +4,7 @@ if (!defined('ABSPATH')) {
 }
 
 $image_size1_section = get_image_sizes('section_image1');
-$home_header_image = get_image_sizes('home_header_image');
+$home_header_image = get_image_sizes('main_slider');
 
 new \Kirki\Panel(
   'panel_cust_page_home',
@@ -37,34 +37,34 @@ new \Kirki\Field\Text(
   ]
 );
 
-new \Kirki\Field\Repeater(
-  [
-    'settings' => 'set_home_header_secondary_text',
-    'label' => esc_html__('Header Secondary Text', 'thrive'),
-    'section' => 'sec_home_header',
-    'row_label' => [
-      'value' => esc_html__('Secondary Text', 'thrive'),
-    ],
-    'choices' => [
-      'limit' => 3,
-    ],
-    'fields' => [
-      'secondary_text' => [
-        'type' => 'text',
-        'label' => esc_html__('Text', 'thrive'),
-        'description' => 'max characters (7)',
-        'sanitize_callback' => function ($value) {
-          $value_test = sanitize_text_field($value);
-          if (mb_strlen($value_test) > 7) {
-            return mb_substr($value_test, 0, 7);
-          } else {
-            return wp_kses_post($value_test);
-          }
-        },
-      ],
-    ],
-  ]
-);
+// new \Kirki\Field\Repeater(
+//   [
+//     'settings' => 'set_home_header_secondary_text',
+//     'label' => esc_html__('Header Secondary Text', 'thrive'),
+//     'section' => 'sec_home_header',
+//     'row_label' => [
+//       'value' => esc_html__('Secondary Text', 'thrive'),
+//     ],
+//     'choices' => [
+//       'limit' => 3,
+//     ],
+//     'fields' => [
+//       'secondary_text' => [
+//         'type' => 'text',
+//         'label' => esc_html__('Text', 'thrive'),
+//         'description' => 'max characters (7)',
+//         'sanitize_callback' => function ($value) {
+//           $value_test = sanitize_text_field($value);
+//           if (mb_strlen($value_test) > 7) {
+//             return mb_substr($value_test, 0, 7);
+//           } else {
+//             return wp_kses_post($value_test);
+//           }
+//         },
+//       ],
+//     ],
+//   ]
+// );
 
 new \Kirki\Field\Text(
   [

@@ -36,7 +36,7 @@ function cfturnstile_whitelisted() {
         }
     }
     // If the User Agent is within the list of User Agents in get_option('cfturnstile_whitelist_agents')
-    if ( get_option( 'cfturnstile_whitelist_agents' ) ) {
+    if (get_option( 'cfturnstile_whitelist_agents' )) {
         $whitelist        = get_option( 'cfturnstile_whitelist_agents' );
         $whitelist_agents = explode("\n", str_replace("\r", "", $whitelist));
 

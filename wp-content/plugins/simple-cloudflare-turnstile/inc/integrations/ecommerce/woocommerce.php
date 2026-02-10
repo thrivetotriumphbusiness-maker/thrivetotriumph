@@ -184,14 +184,12 @@ if(get_option('cfturnstile_woo_checkout')) {
 			// Check
 			if( !$skip && (!$guest || ( $guest && !is_user_logged_in() )) ) {
 				$extensions = $request->get_param( 'extensions' );
-				if ( empty( $extensions ) ) {
+				$token = ( is_array( $extensions ) && isset( $extensions['simple-cloudflare-turnstile']['token'] ) ) ? $extensions['simple-cloudflare-turnstile']['token'] : '';
+
+				if ( empty( $token ) ) {
 					throw new \Exception( cfturnstile_failed_message() );
 				}
-				$value = $extensions[ 'simple-cloudflare-turnstile' ];
-				if ( empty( $value ) ) {
-					throw new \Exception( cfturnstile_failed_message() );
-				}
-				$token = $value['token'];	
+				
 				$check = cfturnstile_check( $token );
 				$success = $check['success'];
 				if($success != true) {
@@ -204,8 +202,12 @@ if(get_option('cfturnstile_woo_checkout')) {
 		}
 	}
 
-	add_action('woocommerce_loaded', 'cfturnstile_register_endpoint_data');
+	add_action('woocommerce_loaded', 'cfturnstile_register_endpoint_data', 20);
 	function cfturnstile_register_endpoint_data() {
+		if ( ! function_exists( 'woocommerce_store_api_register_endpoint_data' ) ) {
+			return;
+		}
+
 		woocommerce_store_api_register_endpoint_data(
 			array(
 				'endpoint'        => 'checkout',
@@ -213,9 +215,10 @@ if(get_option('cfturnstile_woo_checkout')) {
 				'schema_callback' => function() {
 					return array(
 						'token' => array(
-							'description' => __( 'Turnstile token.', 'cfturnstile' ),
-							'type'        => 'string',
-							'context'     => array()
+							'description'       => __( 'Turnstile token.', 'cfturnstile' ),
+							'type'              => 'string',
+							'context'           => array( 'view', 'edit' ),
+							'sanitize_callback' => 'sanitize_text_field',
 						),
 					);
 				},

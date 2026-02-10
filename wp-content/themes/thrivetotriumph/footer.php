@@ -1,3 +1,37 @@
+<!-- start section -->
+<?php
+  $footer_banner_img = get_theme_mod('footer_banner_image');
+  $footer_banner_img_url = wp_get_attachment_image_url($footer_banner_img, 'page_slider');
+  $footer_banner_img_alt = get_post_meta($footer_banner_img, '_wp_attachment_image_alt', true);
+?>
+<section class="pt-4 pb-4 cover-background" style="background-image:url('<?php echo $footer_banner_img ? $footer_banner_img_url : 'https://placehold.co/1920x408' ?>');">
+  <div class="opacity-extra-medium bg-gradient-black-dark-orange" style="backdrop-filter: brightness(50%);"></div>
+  <div class="container position-relative">
+    <div class="row align-items-center justify-content-center text-start text-sm-center text-lg-start">
+      <div class="col-xl-5 col-lg-6 col-md-7 md-mb-25px">
+        <h2
+          class="alt-font text-white fw-500 mb-0 cd-headline zoom fancy-text-style-4 text-shadow-double-large ls-minus-1px">
+          Let's discuss your now
+          <span data-fancy-text='{ "effect": "rotate", "string": ["consulting!", "business!", "innovative!"] }'></span>
+        </h2>
+      </div>
+      <div class="col-xl-5 col-lg-6 col-md-8 col-sm-10 offset-xl-1 icon-with-text-style-08">
+        <div class="feature-box feature-box-left-icon-middle text-start">
+          <div
+            class="feature-box-icon feature-box-icon-rounded w-110px h-110px xs-w-80px xs-h-80px rounded-circle bg-base-color me-20px xs-me-15px">
+            <i class="line-icon-Handshake icon-extra-large text-white lh-100"></i>
+          </div>
+          <div class="feature-box-content last-paragraph-no-margin xs-mt-15px xs-mb-15px">
+            <span class="fs-24 lh-32 xs-fs-22 xs-lh-32 text-white">Looking for collaboration? <a
+                href="mailto:<?php the_field('comp_email', 'option'); ?>"
+                class="text-decoration-line-bottom text-white fw-500"><?php the_field('comp_email', 'option'); ?></a></span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- end section -->
 <!-- start footer -->
 <footer class="footer-light p-0 position-relative">
   <div id="particles-04" class="position-absolute h-100 top-0 left-0 z-index-minus-1 w-100" data-particle="true"
@@ -29,12 +63,14 @@
       <!-- start footer column -->
       <div class="col-6 col-lg-3 col-md-4 md-mb-30px useful-links">
         <span class="alt-font d-block text-dark-gray fw-600 mb-10px fs-19">Useful Links</span>
-        <ul>
-          <li><a href="<?php echo esc_url(site_url('/')) ?>" data-target="about" class="nav-link inner-link">About</a>
+        <ul class="text-dark-gray">
+          <li><a href="<?php echo esc_url(site_url('about')) ?>"
+              class="nav-link">About</a>
           </li>
           <li><a href="<?php echo esc_url(site_url('/')) ?>" data-target="service"
               class="nav-link inner-link">Services</a></li>
-          <li><a href="<?php echo esc_url(site_url('contact')) ?>">Contact</a></li>
+          <li><a href="<?php echo esc_url(site_url('client')) ?>" class="nav-link">Clients</a></li>
+          <li><a href="<?php echo esc_url(site_url('contact')) ?>" class="nav-link">Contact</a></li>
         </ul>
       </div>
       <!-- end footer column -->
@@ -43,11 +79,13 @@
         <span class="alt-font d-block text-dark-gray fw-600 mb-10px fs-19">Get in touch</span>
         <p class="mb-15px w-75 lg-w-85 sm-w-100"><?php the_field('comp_address', 'option'); ?></p>
         <p class="m-0"><span class="fw-600"><i
-              class="feather icon-feather-phone-call text-dark-gray icon-small me-10px"></i></span><a href="tel:<?php the_field('comp_phone_number', 'option'); ?>"
-                      class="text-base-color-hover"><?php the_field('comp_phone_number', 'option'); ?></a></p>
+              class="feather icon-feather-phone-call text-dark-gray icon-small me-10px"></i></span><a
+            href="tel:<?php the_field('comp_phone_number', 'option'); ?>"
+            class="text-base-color-hover"><?php the_field('comp_phone_number', 'option'); ?></a></p>
         <p class="m-0"><span class="fw-600"><i
-              class="feather icon-feather-mail text-dark-gray icon-small me-10px"></i></span> <a href="mailto:<?php the_field('comp_email', 'option'); ?>"
-                    class="text-base-color-hover"><?php the_field('comp_email', 'option'); ?></a></p>
+              class="feather icon-feather-mail text-dark-gray icon-small me-10px"></i></span> <a
+            href="mailto:<?php the_field('comp_email', 'option'); ?>"
+            class="text-base-color-hover"><?php the_field('comp_email', 'option'); ?></a></p>
       </div>
       <!-- end footer column -->
       <!-- start footer column -->

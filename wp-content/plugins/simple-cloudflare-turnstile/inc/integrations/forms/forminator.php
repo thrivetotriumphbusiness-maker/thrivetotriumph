@@ -95,6 +95,19 @@ if(get_option('cfturnstile_forminator')) {
 	add_action('forminator_custom_form_submit_errors', 'cfturnstile_forminator_check', 10, 3);
 	function cfturnstile_forminator_check($submit_errors, $form_id, $field_data_array){
         if(!cfturnstile_form_disable($form_id, 'cfturnstile_forminator_disable')) {
+
+            // Forminator may call this hook multiple times for the same logical submission,
+            // so we use a transient to cache successful validations for a short time.
+            $form_uid  = isset($_POST['form_uid']) ? sanitize_text_field(wp_unslash($_POST['form_uid'])) : '';
+            $cache_key = '';
+            if ($form_uid !== '') {
+                $cache_key = 'cfturnstile_forminator_' . md5($form_id . '|' . $form_uid);
+                $cached    = get_transient($cache_key);
+                if (is_array($cached) && isset($cached['success']) && $cached['success'] === true) {
+                    return $submit_errors;
+                }
+            }
+
             $posted_data = array();
             if (is_array($field_data_array)) {
                 foreach ($field_data_array as $key => $val) {
@@ -128,6 +141,11 @@ if(get_option('cfturnstile_forminator')) {
                 $token = sanitize_text_field($posted_data['cf-turnstile-response']);
             }
 
+            // Fallback: if the token was not present in the structured field data
+            if ($token === '' && isset($_POST['cf-turnstile-response']) && !is_array($_POST['cf-turnstile-response'])) {
+                $token = sanitize_text_field($_POST['cf-turnstile-response']);
+            }
+
             $_post_backup = array();
             $sync_keys = array(
                 'cf-turnstile-response',
@@ -139,6 +157,12 @@ if(get_option('cfturnstile_forminator')) {
                 if (isset($posted_data[$sync_key]) && !is_array($posted_data[$sync_key])) {
                     $_POST[$sync_key] = sanitize_text_field($posted_data[$sync_key]);
                 }
+            }
+
+            // Ensure the resolved token is available in $_POST for cfturnstile_check()
+            // and any failover logic that reads from $_POST.
+            if ($token !== '') {
+                $_POST['cf-turnstile-response'] = $token;
             }
 
             $check = cfturnstile_check($token);
@@ -153,6 +177,8 @@ if(get_option('cfturnstile_forminator')) {
             $success = (is_array($check) && isset($check['success'])) ? $check['success'] : false;
             if($success != true) {
                 $submit_errors[]['submit'] = cfturnstile_failed_message();
+            } elseif ($cache_key !== '') {
+                set_transient($cache_key, array('success' => true), 5 * MINUTE_IN_SECONDS);
             }
         }
         return $submit_errors;

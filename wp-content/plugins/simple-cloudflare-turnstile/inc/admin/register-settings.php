@@ -139,7 +139,7 @@ function cfturnstile_settings_list($all = false) {
         'elementor-pro/elementor-pro.php' => array(
             'cfturnstile_elementor',
             'cfturnstile_elementor_pos',
-            'cfturnstile_elementor_method',
+            'cfturnstile_elementor_align',
             'cfturnstile_elementor_global_pages',
             'cfturnstile_elementor_global_scope',
         ),
@@ -152,7 +152,7 @@ function cfturnstile_settings_list($all = false) {
         'pro-elements/pro-elements.php' => array(
             'cfturnstile_elementor',
             'cfturnstile_elementor_pos',
-            'cfturnstile_elementor_method',
+            'cfturnstile_elementor_align',
             'cfturnstile_elementor_global_scope',
             'cfturnstile_elementor_global_pages',
         ),

@@ -1,10 +1,10 @@
 === Simple CAPTCHA Alternative with Cloudflare Turnstile ===
 Contributors: ElliotVS, RelyWP
 Tags: cloudflare,turnstile,captcha,protect,spam
-Donate link: https://github.com/sponsors/ElliotSowersby/
+Donate link: https://www.elliotsowersby.com/donate/
 Requires at least: 4.7
 Tested up to: 6.9
-Stable Tag: 1.36.1
+Stable Tag: 1.37.0
 License: GPLv3 or later.
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -118,7 +118,7 @@ Currently available in <a href="https://translate.wordpress.org/projects/wp-plug
 
 Special thanks to all <a href="https://github.com/sponsors/ElliotSowersby/">sponsors</a> that help support the development of this plugin.
 
-If you would like to support the continued development and support of this plugin, you can <a href="https://www.paypal.com/donate/?hosted_button_id=RX28BBH7L5XDS">make a donation via PayPal</a> or <a href="https://github.com/sponsors/ElliotSowersby/">sponsor the plugin on GitHub</a>.
+If you would like to support the continued development and support of this plugin, you can <a href="https://www.elliotsowersby.com/donate/">make a donation</a></a>.
 
 ## Trademark Notice ##
 
@@ -207,6 +207,18 @@ If you are still having issues, please post a <a href="https://wordpress.org/sup
 You can report security bugs through the Patchstack Vulnerability Disclosure Program. The Patchstack team help validate, triage and handle any security vulnerabilities. [Report a security vulnerability.](https://patchstack.com/database/vdp/simple-cloudflare-turnstile)
 
 == Changelog ===
+
+= Version 1.37.0 - 12th January 2026 =
+- Improvement: Improved the Elementor integration to work better in more cases, and with Elementor popups.
+- Improvement: Added an alignment option for the Elementor integration.
+- Tweak: Removed the "Integration Method" option for Elementor forms. It will now load globally but has an option to choose where scripts are loaded.
+- Tweak: Small tweaks to the settings page.
+- Tweak: Added a copy button for the debug log.
+- Fix: Fixed a new issue some websites were experiencing with WooCommerce block checkout not working with Turnstile.
+- Fix: Fixed an error "attempt to read property success on null" showing in some cases.
+- Fix: Fixed the widget label not showing in some cases, on the comments form.
+- Fix: Fixed WooCommerce checkout in some cases not re-rendering Turnstile after payment errors. It should now rerender correctly in all cases to prevent Turnstile errors.
+- Fix: Fixed an issue with Forminator forms when using file upload fields.
 
 = Version 1.36.1 - 31st December 2025 =
 - Fix: Fixed an issue with the disable submit feature not working in some cases.

@@ -1,0 +1,31 @@
+21-01-2026 04:47:12 - INFO  - 9.1.1 - 5.7 MB/256 MB - thrive > Start upgrade from 9.1.0
+21-01-2026 04:47:12 - INFO  - 9.1.1 - 5.8 MB/256 MB - thrive > Array
+(
+)
+
+21-01-2026 04:47:12 - INFO  - 9.1.1 - 5.8 MB/256 MB - thrive > Array
+(
+)
+
+21-01-2026 04:47:12 - INFO  - 9.1.1 - 5.8 MB/256 MB - thrive > Array
+(
+)
+
+21-01-2026 04:47:12 - INFO  - 9.1.1 - 5.8 MB/256 MB - thrive > Array
+(
+)
+
+21-01-2026 04:47:12 - INFO  - 9.1.1 - 5.8 MB/256 MB - thrive > Array
+(
+)
+
+21-01-2026 04:47:12 - INFO  - 9.1.1 - 5.8 MB/256 MB - thrive > Array
+(
+)
+
+21-01-2026 04:47:12 - INFO  - 9.1.1 - 5.8 MB/256 MB - thrive > Array
+(
+)
+
+21-01-2026 04:47:12 - INFO  - 9.1.1 - 5.8 MB/256 MB - thrive > Backing up options of 9.1.0
+21-01-2026 04:47:12 - INFO  - 9.1.1 - 6.0 MB/256 MB - thrive > End

@@ -2,28 +2,9 @@
 get_header();
 while (have_posts()) {
   the_post();
-  $contact_header_img = get_theme_mod('set_contact_header_image');
-  $contact_header_img_url = wp_get_attachment_image_url($contact_header_img, 'page_slider');
-  $contact_header_img_alt = get_post_meta($contact_header_img, '_wp_attachment_image_alt', true);
   ?>
   <!-- start page title -->
-  <section class="cover-background page-title-big-typography ipad-top-space-margin xs-py-0"
-    style="background-image: url('<?php if ($contact_header_img_url) {
-      echo $contact_header_img_url;
-    } else {
-      echo 'https://placehold.co/1920x560';
-    } ?>')"
-    data-anime='{ "opacity": [0, 1], "easing": "easeOutQuad" }'>
-    <div class="container">
-      <div class="row align-items-center extra-small-screen">
-        <div class="col-9 col-lg-5 col-sm-6 position-relative page-title-extra-small"
-          data-anime='{ "el": "childs", "opacity": [0, 1], "translateX": [-50, 0], "duration": 800, "delay": 0, "staggervalue": 150, "easing": "easeOutQuad" }'>
-          <h1 class="mb-20px text-base-color fw-500 ls-minus-05px"><?php echo get_theme_mod('set_contact_header_subtitle') ?></h1>
-          <h2 class=" fw-700 text-dark-gray mb-0 ls-minus-2px"><?php echo get_theme_mod('set_contact_header_title') ?></h2>
-        </div>
-      </div>
-    </div>
-  </section>
+  <?php get_template_part('template-parts/partials/content', 'page-header') ?>
   <!-- end page title -->
   <!-- start section -->
   <section class="bg-very-light-gray">
@@ -97,9 +78,12 @@ while (have_posts()) {
       <div class="row justify-content-center mb-3">
         <div class="col-lg-7 text-center"
           data-anime='{ "el": "childs", "translateY": [50, 0], "opacity": [0,1], "duration": 600, "delay": 0, "staggervalue": 300, "easing": "easeOutQuad" }'>
-          <span class="alt-font text-uppercase fw-500 fs-18 d-inline-block text-dark-gray ls-1px">Feel free to get in
-            touch!</span>
-          <h3 class="alt-font text-dark-gray fw-700 ls-minus-2px">How we can help you?</h3>
+          <span class="fw-600 ls-1px fs-16 alt-font d-inline-block text-uppercase mb-5px text-base-color">
+            Feel free to get in touch!
+          </span>
+          <h3 class="text-dark-gray fw-600 ls-minus-2px mb-50px">
+            How we can help you?
+          </h3>
         </div>
       </div>
       <div class="row row-cols-md-1 justify-content-center">
@@ -116,10 +100,12 @@ while (have_posts()) {
     <div class="container-fluid">
       <div class="row justify-content-center">
         <div class="col-12 p-0">
-          <iframe
-            src="https://maps.google.com/maps?q=<?php the_field('comp_lat', 'option') ?>,<?php the_field('comp_long', 'option') ?>&z=15&output=embed"
-            width="100%" height="500" allowfullscreen="" loading="lazy"
-            referrerpolicy="no-referrer-when-downgrade"></iframe>
+          <div style="height:500px">
+            <iframe
+              src="https://maps.google.com/maps?q=<?php the_field('comp_lat', 'option') ?>,<?php the_field('comp_long', 'option') ?>&z=15&output=embed"
+              width="100%" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+              style="height: 100%"></iframe>
+          </div>
         </div>
       </div>
     </div>

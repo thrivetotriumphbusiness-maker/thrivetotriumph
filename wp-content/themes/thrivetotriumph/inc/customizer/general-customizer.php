@@ -3,6 +3,8 @@ if (!defined('ABSPATH')) {
   die;
 }
 
+$image_size_slider = get_image_sizes('page_slider');
+
 new \Kirki\Panel(
   'panel_my_site_general',
   [
@@ -71,6 +73,28 @@ new \Kirki\Field\Textarea(
         return wp_kses_post($value_test);
       }
     },
+  ]
+);
+
+new \Kirki\Pro\Field\Headline(
+	[
+		'settings'    => 'footer_banner',
+		'label'       => esc_html__( 'Footer Banner', 'thrive' ),
+		'description' => esc_html__( 'Footer Banner settings', 'thrive' ),
+		'section'     => 'sec_footer',
+		'tooltip'     => 'Footer Banner settings',
+	]
+);
+
+new \Kirki\Field\Image(
+  [
+    'settings' => 'footer_banner_image',
+    'label' => esc_html__('Footer Banner Image', 'thrive'),
+    'section' => 'sec_footer',
+    'description' => "For best result the resolutions is $image_size_slider[width] X $image_size_slider[height] or higher",
+    'choices' => [
+      'save_as' => 'id',
+    ],
   ]
 );
 

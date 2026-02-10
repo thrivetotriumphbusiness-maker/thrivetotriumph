@@ -13,7 +13,6 @@
                                                                      |_|          
   -->
   <!-- 
-  If you look inside, you’ll probably be wondering who the handsome developer behind this is, right? 😜.
   I’m Albar, a professional web developer with over 10 years of experience. 
   Feel free to reach out through any of the contact options below for collaboration opportunities.
 
@@ -46,9 +45,29 @@ if (!function_exists('wp_body_open')) {
   <?php wp_body_open() ?>
 
   <!-- start header -->
-  <header>
+  <header class="header-with-topbar">
+    <!-- start header top bar -->
+    <div class="header-top-bar top-bar-dark bg-very-light-gray">
+      <div class="container-fluid">
+        <div class="row h-45px xs-h-auto align-items-center m-0 xs-pt-5px xs-pb-5px">
+          <div class="col-lg-6 col-md-7 text-center text-md-start xs-px-0">
+            <div class="fs-15 text-dark-gray fw-500">Our training experts waiting for you! <a
+                href="<?php echo esc_url(site_url('contact')) ?>"
+                class="text-dark-gray text-decoration-line-bottom fw-600">Contact
+                now</a></div>
+          </div>
+          <div class="col-lg-6 col-md-5 text-end d-none d-md-flex">
+            <div class="widget fs-15 fw-500 me-35px lg-me-25px md-me-0 text-dark-gray"><a href="tel:<?php the_field('comp_phone_number', 'option'); ?>"><i
+                  class="feather icon-feather-phone-call"></i><?php the_field('comp_phone_number', 'option'); ?></a></div>
+            <div class="widget fs-15 fw-500 text-dark-gray d-none d-lg-inline-block"><i
+                class="feather icon-feather-map-pin"></i><?php echo wp_trim_words(get_field('comp_address', 'option'), 8); ?></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- end header top bar -->
     <!-- start navigation -->
-    <nav class="navbar navbar-expand-lg header-light header-transparent bg-transparent disable-fixed">
+    <nav class="navbar navbar-expand-lg header-light bg-white responsive-sticky">
       <div class="container-fluid">
         <div class="col-auto col-lg-2 me-lg-0 me-auto">
           <a class="navbar-brand" href="<?php echo esc_url(home_url()) ?>">
@@ -72,33 +91,27 @@ if (!function_exists('wp_body_open')) {
             <span class="navbar-toggler-line"></span>
           </button>
           <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav">
-              <li class="nav-item"><a href="<?php echo esc_url(site_url('/')); ?>" data-target="about"
-                  class="nav-link inner-link">About</a></li>
-              <li class="nav-item"><a href="<?php echo esc_url(site_url('/')); ?>" data-target="client"
-                  class="nav-link inner-link">Clients</a></li>
+            <ul class="navbar-nav fw-600">
+              <li class="nav-item <?php if (is_front_page()) echo "active" ?>"><a href="<?php echo esc_url(site_url('/')); ?>" class="nav-link">Home</a></li>
+              <li class="nav-item <?php if (is_page('about')) echo "active" ?>"><a href="<?php echo esc_url(site_url('about')); ?>" class="nav-link">About</a></li>
               <li class="nav-item"><a href="<?php echo esc_url(site_url('/')); ?>" data-target="service"
                   class="nav-link inner-link">Services</a></li>
-              <li class="nav-item"><a href="<?php echo esc_url(site_url('/')); ?>" data-target="why-choose-us"
-                  class="nav-link inner-link">Why Choose Us</a></li>
-              <li class="nav-item"><a href="<?php echo esc_url(site_url('/')); ?>" data-target="testimonial"
-                  class="nav-link inner-link">Testimonials</a></li>
-              <li class="nav-item"><a href="<?php echo esc_url(site_url('contact')); ?>" class="nav-link">Contact</a>
+              <!-- <li class="nav-item"><a href="<?php echo esc_url(site_url('/')); ?>" data-target="why-choose-us"
+                  class="nav-link inner-link">Why Choose Us</a></li> -->
+              <li class="nav-item <?php if (is_page('clients')) echo "active" ?>"><a href="<?php echo esc_url(site_url('/client')); ?>" class="nav-link">Clients</a>
+              </li>
+              <!-- <li class="nav-item"><a href="<?php echo esc_url(site_url('/')); ?>" data-target="testimonial"
+                  class="nav-link inner-link">Testimonials</a></li> -->
+              <li class="nav-item <?php if (is_page('contact')) echo "active" ?>"><a href="<?php echo esc_url(site_url('contact')); ?>" class="nav-link">Contact</a>
               </li>
             </ul>
           </div>
         </div>
-        <div class="col-auto col-lg-2 text-end">
+        <div class="col-auto col-lg-2 text-end d-none d-sm-flex">
           <div class="header-icon">
-            <div class="header-social-icon icon">
-              <?php if (have_rows('comp_sosmed_links', 'option')) {
-                while (have_rows('comp_sosmed_links', 'option')) {
-                  the_row();
-                  ?>
-                  <a rel="noopener noreferrer" href="<?php echo get_sub_field('comp_sosmed_url') ?>" target="_blank"><i
-                      class="<?php echo get_sub_field('comp_sosmed_icon') ?>"></i></a>
-                <?php }
-              } ?>
+            <div class="header-button">
+              <a href="<?php echo esc_url(site_url('contact')) ?>"
+                class="btn btn-small btn-rounded btn-base-color btn-box-shadow">Let's discuss</a>
             </div>
           </div>
         </div>

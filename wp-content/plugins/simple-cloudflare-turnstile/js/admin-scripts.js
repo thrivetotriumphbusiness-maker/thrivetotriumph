@@ -61,49 +61,28 @@ document.addEventListener('DOMContentLoaded', function() {
   });
 });
 
-/* Elementor Integration Method Toggle */
+/* Elementor Scripts Scope Toggle */
 document.addEventListener("DOMContentLoaded", function() {
-    const elementorMethodSelect = document.getElementById('cfturnstile_elementor_method');
-    if (elementorMethodSelect) {
-    const globalControls = document.getElementById('cfturnstile-elementor-global-controls');
-    const pagesWrap = document.getElementById('cfturnstile-elementor-global-pages-wrap');
-    const scopeSelect = document.getElementById('cfturnstile_elementor_global_scope');
+  const pagesWrap = document.getElementById('cfturnstile-elementor-global-pages-wrap');
+  const scopeSelect = document.getElementById('cfturnstile_elementor_global_scope');
+  if (!scopeSelect) return;
 
-    const updateVisibility = () => {
-      const selectedValue = elementorMethodSelect.value;
-      // Hide all method descriptions
-      document.querySelectorAll('.cfturnstile-elementor-method-description').forEach(function(div) {
-        div.style.display = 'none';
-      });
-      // Show the selected method description
-      const selectedDiv = document.getElementById('cfturnstile-elementor-method-' + selectedValue);
-      if (selectedDiv) selectedDiv.style.display = 'inline-block';
-
-      // Toggle global controls visibility
-      if (globalControls) {
-        globalControls.style.display = (selectedValue === 'global') ? '' : 'none';
-      }
-
-      // Toggle pages wrap based on scope select
-      if (pagesWrap && scopeSelect) {
-        pagesWrap.style.display = (scopeSelect.value === 'specific') ? '' : 'none';
-      }
-
-      // Toggle scope descriptions
-      document.querySelectorAll('.cfturnstile-elementor-scope-description').forEach(function(div){
-        div.style.display = 'none';
-      });
-      if (scopeSelect && selectedValue === 'global') {
-        const scopeDiv = document.getElementById('cfturnstile-elementor-scope-' + scopeSelect.value);
-        if (scopeDiv) scopeDiv.style.display = 'block';
-      }
-    };
-
-    elementorMethodSelect.addEventListener('change', updateVisibility);
-    if (scopeSelect) scopeSelect.addEventListener('change', updateVisibility);
-    // Init on load
-    updateVisibility();
+  const updateVisibility = () => {
+    // Toggle pages wrap based on scope select
+    if (pagesWrap) {
+      pagesWrap.style.display = (scopeSelect.value === 'specific') ? '' : 'none';
     }
+
+    // Toggle scope descriptions
+    document.querySelectorAll('.cfturnstile-elementor-scope-description').forEach(function(div){
+      div.style.display = 'none';
+    });
+    const scopeDiv = document.getElementById('cfturnstile-elementor-scope-' + scopeSelect.value);
+    if (scopeDiv) scopeDiv.style.display = 'block';
+  };
+
+  scopeSelect.addEventListener('change', updateVisibility);
+  updateVisibility();
 });
 
 /* Failure Message Toggle */
@@ -177,4 +156,58 @@ document.addEventListener("DOMContentLoaded", function() {
   failsafeType.addEventListener('change', updateFailsafeVisibility);
 
   updateFailsafeVisibility();
+});
+
+/* Copy Turnstile Debug Log */
+document.addEventListener('DOMContentLoaded', function() {
+  var copyButton = document.getElementById('cfturnstile-copy-log');
+  if (!copyButton) return;
+  if (copyButton.disabled) return;
+
+  copyButton.addEventListener('click', async function() {
+    var targetId = this.getAttribute('data-target') || 'cfturnstile-debug-log-text';
+    var target = document.getElementById(targetId);
+    if (!target) return;
+    var text = (target.value !== undefined) ? target.value : (target.textContent || '');
+    if (!text) return;
+
+    var originalLabel = this.getAttribute('data-original-label') || this.textContent;
+    this.setAttribute('data-original-label', originalLabel);
+    this.disabled = true;
+
+    var copied = false;
+    try {
+      if (navigator.clipboard && window.isSecureContext) {
+        await navigator.clipboard.writeText(text);
+        copied = true;
+      }
+    } catch (e) {
+      copied = false;
+    }
+
+    if (!copied) {
+      try {
+        var temp = document.createElement('textarea');
+        temp.value = text;
+        temp.setAttribute('readonly', '');
+        temp.style.position = 'absolute';
+        temp.style.left = '-9999px';
+        temp.style.top = '0';
+        document.body.appendChild(temp);
+        temp.select();
+        temp.setSelectionRange(0, temp.value.length);
+        copied = document.execCommand('copy');
+        document.body.removeChild(temp);
+      } catch (e) {
+        copied = false;
+      }
+    }
+
+    this.textContent = copied ? 'Copied!' : 'Copy failed';
+    var self = this;
+    window.setTimeout(function() {
+      self.textContent = originalLabel;
+      self.disabled = false;
+    }, 1500);
+  });
 });

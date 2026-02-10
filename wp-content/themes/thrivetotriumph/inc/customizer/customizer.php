@@ -23,4 +23,5 @@ function initialize_kirki_settings()
   require_once __DIR__.'/general-customizer.php';
   require_once __DIR__.'/home-customizer.php';
   require_once __DIR__.'/contact-customizer.php';
+  require_once __DIR__.'/client-customizer.php';
 }

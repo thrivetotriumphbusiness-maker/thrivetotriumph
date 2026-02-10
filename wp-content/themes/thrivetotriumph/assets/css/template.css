@@ -7,12 +7,14 @@
 /* variable */
 :root {
   --base-color: #e47512;
+  --secondary-color: #F0A50F;
   --dark-gray: #292d36;
   --ternary-color: #06923f;
   --accent-color: #d2ebcc;
   --medium-gray: #808291;
   --primary-font: "Kumbh Sans", sans-serif;
-  --alt-font: "Kumbh Sans", sans-serif;
+  /* --alt-font: "Kumbh Sans", sans-serif; */
+  --alt-font: 'cerebri-sans-regular';
 }
 /* custom cursor */
 @media (hover: hover) and (pointer: fine) {
