@@ -1,1 +1,20 @@
-:root{--base-color:#e47512;--secondary-color:#f0a50f;--dark-gray:#292d36;--ternary-color:#06923f;--accent-color:#d2ebcc;--medium-gray:#808291;--primary-font:"Kumbh Sans",sans-serif;--alt-font:"cerebri-sans-regular"}.wp-block-alb-general-heading-block{border:1px solid var(--base-color);padding:10px}
+/*!***********************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[4].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[4].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[4].use[3]!./blocks/general-sec-container-block/editor.scss ***!
+  \***********************************************************************************************************************************************************************************************************************************************************************/
+/* variables */
+:root {
+  --base-color: #E47512;
+  --secondary-color: #F0A50F;
+  --dark-gray: #292d36;
+  --ternary-color: #06923F;
+  --accent-color: #D2EBCC;
+  --medium-gray: #808291;
+  --primary-font: "Kumbh Sans", sans-serif;
+  --alt-font: "cerebri-sans-regular";
+}
+.wp-block-alb-general-heading-block {
+  border: 1px solid var(--base-color);
+  padding: 10px;
+}
+
+/*# sourceMappingURL=index.css.map*/

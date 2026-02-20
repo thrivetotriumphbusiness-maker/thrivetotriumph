@@ -9,6 +9,12 @@ class Nav {
 
   _initEventHandlers() {
     document.addEventListener("DOMContentLoaded", (e) => {
+      const hashValue = window.location.hash.substring(1);
+      console.log("hashValue:", hashValue);
+      if (!hashValue && !this.nav_cookie){
+        $.removeCookie("thrivetotriumph_nav");
+        this.nav_cookie = null;
+      }
       if (document.getElementById(this.nav_cookie)) {
         // const dataTarget = navLink.data("target");
         // history.pushState(null, "", `#${this.nav_cookie}`);
@@ -30,7 +36,7 @@ class Nav {
       }
     });
     $(".nav-link").on("click", function (e) {
-      $.removeCookie("thrivetotriumph_nav");
+      console.log("nav link clicked");
       $(".navbar-collapse.collapse").collapse("hide");
       const navLink = $(e.target).closest(".nav-link");
       navLink.parents('li.nav-item').addClass('active').siblings().removeClass('active');
@@ -49,6 +55,8 @@ class Nav {
         if (siteLocalData.is_home) {
           return false;
         }
+      }else {
+        $.removeCookie("thrivetotriumph_nav");
       }
       return true;
     });
